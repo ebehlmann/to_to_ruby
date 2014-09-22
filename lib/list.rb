@@ -9,12 +9,16 @@ class List
 	def tasks
 		@tasks
 	end
+
+	def description
+		@description
+	end
 	
 	def add_task(task)
 		@tasks << Task.new(task)
 	end
-	
-	def description
-		@description
+
+	def List.all
+		[]
 	end
 end
