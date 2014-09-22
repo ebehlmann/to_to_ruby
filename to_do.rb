@@ -51,7 +51,6 @@ def list_menu
 		@lists.each do |list|
 			if secondary_choice == list.description
 				list_tasks(list)
-				task_level_menu(list)
 			end
 		end
 	end
@@ -63,16 +62,18 @@ def list_tasks(list)
 		puts task.description
 	end
 	puts "\n\n"
-	puts task_level_menu
+	puts task_level_menu(list)
 end
 
 def task_level_menu(list)
-	puts "Press 'a' to add a task to the #{list.description} list. Press 'b' to go back."
+	puts "Press 'a' to add a task to the #{list.description} list. Press 'l' to list all the tasks in the #{list.description} list. Press 'b' to go back."
 	puts "Press 'x' to exit."
 	task_level_choice = gets.chomp
 
 	if task_level_choice == 'a'
 		add_task(list)
+	elsif task_level_choice == 'l'
+		list_tasks(list)
 	elsif task_level_choice == 'b'
 		list_menu
 	elsif task_level_choice == 'x'
@@ -86,10 +87,10 @@ end
 def add_task(list)
 	puts "Enter a description of the new task."
 	user_description = gets.chomp
-	list << Task.new(user_description)
+	list.tasks << Task.new(user_description)
 	puts "Task added."
 	puts "\n\n"
-	task_level_menu
+	task_level_menu(list)
 end
 
 main_menu
