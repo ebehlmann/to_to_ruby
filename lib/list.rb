@@ -1,6 +1,16 @@
 require './lib/task'
 
 class List
+	@@all_lists = []
+
+	def List.all
+		@@all_lists
+	end
+
+	def List.clear
+		@@all_lists = []
+	end
+
 	def initialize(description)
 		@description = description
 		@tasks = []
@@ -18,7 +28,7 @@ class List
 		@tasks << Task.new(task)
 	end
 
-	def List.all
-		[]
+	def save
+		@@all_lists << self
 	end
 end

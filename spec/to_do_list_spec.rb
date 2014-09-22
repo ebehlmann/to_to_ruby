@@ -30,5 +30,11 @@ describe List do
 		it 'is empty at first' do
 			List.all.should eq []
 		end
+
+		it 'gets added to when save is called on an instance' do
+			test_list = List.new('School stuff')
+			test_list.save
+			List.all.should eq [test_list]
+		end
 	end
 end

@@ -1,8 +1,6 @@
 require './lib/task'
 require './lib/list'
 
-@lists = []
-
 def main_menu
 	puts "Press 'n' to add a new list or 'l' to see your existing lists."
 	puts "Press 'x' to exit."
@@ -23,7 +21,7 @@ end
 def add_list
 	puts "Enter a name for your new list."
 	list_description = gets.chomp
-	@lists << List.new(list_description)
+	List.all << List.new(list_description)
 	puts "List created."
 	puts "\n\n"
 	main_menu
@@ -31,7 +29,7 @@ end
 
 def list_lists
 	puts "Here are all of your task lists:"
-	@lists.each do |list|
+	List.all.each do |list|
 		puts list.description
 	end
 	puts "\n\n"
@@ -48,7 +46,7 @@ def list_menu
 	elsif secondary_choice == 'x'
 		puts "Goodbye!"
 	else
-		@lists.each do |list|
+		List.all.each do |list|
 			if secondary_choice == list.description
 				list_tasks(list)
 			end
@@ -85,7 +83,7 @@ def task_level_menu(list)
 end
 
 def add_task(list)
-	puts "Enter a description of the new task."
+	puts "Enter a description of the new task for the #{list.description} list."
 	user_description = gets.chomp
 	list.add_task(user_description)
 	puts "Task added."
