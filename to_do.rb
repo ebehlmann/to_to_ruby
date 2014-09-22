@@ -87,7 +87,7 @@ end
 def add_task(list)
 	puts "Enter a description of the new task."
 	user_description = gets.chomp
-	list.tasks << Task.new(user_description)
+	list.add_task(user_description)
 	puts "Task added."
 	puts "\n\n"
 	task_level_menu(list)

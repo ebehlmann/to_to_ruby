@@ -26,4 +26,10 @@ describe List do
 		test_list.add_task(test_task)
 		test_list.tasks.should eq [test_task]
 	end
+
+	describe '.all' do
+		it 'is empty at first' do
+			List.all.should eq []
+		end
+	end
 end
